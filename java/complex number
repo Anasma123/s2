@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class ComplexNumber {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        double num = scanner.nextDouble();
+
+        if (num >= 0) {
+            System.out.println("Real number: " + num);
+        } else {
+            double realPart = 0;
+            double imaginaryPart = Math.sqrt(-num);
+            System.out.println("Complex number: " + realPart + " + " + imaginaryPart + "i");
+        }
+        scanner.close();
+    }
+}
+
