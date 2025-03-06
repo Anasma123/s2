@@ -11,12 +11,12 @@ insert into customer(cid,cname,number)values
     -> ('b','anu',8534272),
     -> ('a','anas',8728272);
 
-insert into customer(cid,cname,number)values
-    -> ('e','anju',9872242),
-    -> ('d','ameen',6345442),
-    -> ('c','zal',675442),
-    -> ('b','anu',8534272),
-    -> ('a','anas',8728272);
+insert into barch(bid,bname,place)values
+    -> ('q','sbt',pvt),
+    -> ('w','sbt calicut',calicut),
+    -> ('r','sbt mvr',mavoor),
+    -> ('t','canara',kzkod),
+    -> ('u','rbi',delhi);
 
 insert into borrow(loanno,cname,bname,amount)values
     -> ('ab123','zal','sbk mvr',87264),
