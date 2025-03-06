@@ -1,0 +1,6 @@
+use bankanddepost
+
+
+ create table deposit(accno varchar(10)primary key,cname varchar(25),bname varchar(25) references branch(bname),amount int(10),accdate date);
+
+ create table branch (bname varchar(25));
