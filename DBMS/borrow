@@ -35,3 +35,10 @@ SELECT * from borrow order by cname desc;
 SELECT * from borrow order by cname;
 
 SELECT max(amount)from borrow;
+
+SELECT cname, SUM(amount) AS total_loan_amount
+FROM borrow
+GROUP BY cname
+ORDER BY total_loan_amount DESC
+LIMIT 1;
+
