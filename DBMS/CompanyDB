@@ -31,4 +31,36 @@ CREATE TABLE SalaryGrade (
 
 DESCRIBE SalaryGrade;
 
+-- Inserting into Department
+INSERT INTO Department (deptno, deptname, location) VALUES
+(10, 'Accounting', 'US'),
+(20, 'Research', 'US'),
+(30, 'Sales', 'US'),
+(40, 'Operations', 'US'),
+(50, 'HR', 'US');
 
+-- Inserting into SalaryGrade
+INSERT INTO SalaryGrade (grade, lowsalary, highsalary) VALUES
+(1, 700, 1200),
+(2, 1201, 1400),
+(3, 1401, 2000),
+(4, 2001, 3000),
+(5, 3001, 5000);
+
+-- Inserting into Employee
+INSERT INTO Employee (empno, ename, job, managerid, hiredate, salary, commision, deptno) VALUES
+(1001, 'SMITH', 'CLERK', 1003, '1987-12-17', 800, NULL, 20),
+(1002, 'ALLEN', 'SALESMAN', 1006, '1981-02-20', 1600, 300, 30),
+(1003, 'WARD', 'SALESMAN', 1006, '1981-02-22', 1250, 500, 30),
+(1004, 'JONES', 'MANAGER', 1009, '1981-04-02', 2975, NULL, 20),
+(1005, 'MARTIN', 'SALESMAN', 1006, '1981-09-28', 1250, 1400, 30),
+(1006, 'BLAKE', 'MANAGER', 1009, '1981-05-01', 2850, NULL, 30),
+(1007, 'CLARK', 'MANAGER', 1009, '1981-06-09', 2450, NULL, 10),
+(1008, 'KING', 'PRESIDENT', NULL, '1981-11-17', 5000, NULL, 10),
+(1009, 'TURNER', 'SALESMAN', 1006, '1981-09-08', 1500, 0, 30),
+(1010, 'JAMES', 'CLERK', 1006, '1981-12-03', 950, NULL, 30);
+
+
+SELECT * FROM Employee;
+SELECT * FROM Department;
+SELECT * FROM SalaryGrade;
