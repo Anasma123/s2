@@ -1,0 +1,34 @@
+CREATE DATABASE CompanyDB;
+
+USE CompanyDB;
+
+CREATE TABLE Employee (
+    empno INT PRIMARY KEY,
+    ename VARCHAR(30),
+    job VARCHAR(10),
+    managerid INT,
+    hiredate DATE,
+    salary INT,
+    commision INT,
+    deptno INT
+);
+
+DESCRIBE Employee;
+
+CREATE TABLE Department (
+    deptno INT PRIMARY KEY,
+    deptname VARCHAR(15),
+    location VARCHAR(10)
+);
+
+DESCRIBE Department;
+
+CREATE TABLE SalaryGrade (
+    grade INT PRIMARY KEY,
+    lowsalary INT,
+    highsalary INT
+);
+
+DESCRIBE SalaryGrade;
+
+
