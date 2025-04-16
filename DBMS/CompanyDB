@@ -31,6 +31,9 @@ CREATE TABLE SalaryGrade (
 
 DESCRIBE SalaryGrade;
 
+
+exc-2
+
 -- Inserting into Department
 INSERT INTO Department (deptno, deptname, location) VALUES
 (10, 'Accounting', 'US'),
@@ -160,3 +163,85 @@ FROM Employee
 GROUP BY empno
 HAVING COUNT(*) > 1;
 -- If no rows returned, all empnos are unique ✅
+
+ecx-3
+
+-- 1. Display all employee names and their department names in department name order
+SELECT E.ename, D.deptname
+FROM Employee E
+JOIN Department D ON E.deptno = D.deptno
+ORDER BY D.deptname;
+
+-- 2. Display the name, location, and department name of all employees whose salary is more than 1500
+SELECT E.ename, D.location, D.deptname
+FROM Employee E
+JOIN Department D ON E.deptno = D.deptno
+WHERE E.salary > 1500;
+
+-- 3. Produce a list showing employee’s salary grade
+SELECT E.ename, E.salary, S.grade
+FROM Employee E
+JOIN SalaryGrade S ON E.salary BETWEEN S.lowsalary AND S.highsalary;
+
+-- 4. List employees in grade 3
+SELECT E.*
+FROM Employee E
+JOIN SalaryGrade S ON E.salary BETWEEN S.lowsalary AND S.highsalary
+WHERE S.grade = 3;
+
+-- 5. Show all employees in US
+SELECT E.*
+FROM Employee E
+JOIN Department D ON E.deptno = D.deptno
+WHERE D.location = 'US';
+
+-- 6. List employee name, job, salary, grade and department name for all except clerks. Sort on salary descending
+SELECT E.ename, E.job, E.salary, S.grade, D.deptname
+FROM Employee E
+JOIN Department D ON E.deptno = D.deptno
+JOIN SalaryGrade S ON E.salary BETWEEN S.lowsalary AND S.highsalary
+WHERE E.job <> 'CLERK'
+ORDER BY E.salary DESC;
+
+-- 7. List name, job, salary for employees earning 36000/year or who are clerks
+SELECT ename, job, salary
+FROM Employee
+WHERE (salary * 12 = 36000) OR job = 'CLERK';
+
+ecx-4
+
+-- 1. Display employees who earn more than the lowest salary in department 30
+SELECT * FROM Employee
+WHERE salary > (
+    SELECT MIN(salary)
+    FROM Employee
+    WHERE deptno = 30
+);
+
+-- 2. Find the employees who earn more than every employee in department 30
+SELECT * FROM Employee
+WHERE salary > ALL (
+    SELECT salary
+    FROM Employee
+    WHERE deptno = 30
+);
+
+-- 3. Find the job with the highest average salary
+SELECT job
+FROM Employee
+GROUP BY job
+ORDER BY AVG(salary) DESC
+LIMIT 1;
+
+-- 4. Find the departments not having any employees
+SELECT D.*
+FROM Department D
+LEFT JOIN Employee E ON D.deptno = E.deptno
+WHERE E.empno IS NULL;
+
+-- 5. Display the name and salary of the top three earners in the company
+SELECT ename, salary
+FROM Employee
+ORDER BY salary DESC
+LIMIT 3;
+
