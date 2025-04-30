@@ -1,0 +1,57 @@
+import java.util.Scanner;
+
+public class AreaCalculator {
+
+    double area(double radius) {
+        return Math.PI * radius * radius;
+    }
+
+    double area(double length, double breadth) {
+        return length * breadth;
+    }
+
+    double area(double base, double height, boolean isTriangle) {
+        return 0.5 * base * height;
+    }
+
+    int area(int side) {
+        return side * side;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        AreaCalculator obj = new AreaCalculator();
+
+        System.out.println("Choose shape: 1.Circle 2.Rectangle 3.Triangle 4.Square");
+        int choice = sc.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.print("Enter radius: ");
+                double radius = sc.nextDouble();
+                System.out.println("Area of Circle: " + obj.area(radius));
+                break;
+            case 2:
+                System.out.print("Enter length and breadth: ");
+                double length = sc.nextDouble();
+                double breadth = sc.nextDouble();
+                System.out.println("Area of Rectangle: " + obj.area(length, breadth));
+                break;
+            case 3:
+                System.out.print("Enter base and height: ");
+                double base = sc.nextDouble();
+                double height = sc.nextDouble();
+                System.out.println("Area of Triangle: " + obj.area(base, height, true));
+                break;
+            case 4:
+                System.out.print("Enter side: ");
+                int side = sc.nextInt();
+                System.out.println("Area of Square: " + obj.area(side));
+                break;
+            default:
+                System.out.println("Invalid choice!");
+        }
+
+        sc.close();
+    }
+}
