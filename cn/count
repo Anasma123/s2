@@ -1,26 +1,32 @@
 #!/bin/bash
-if [ $# -gt 1 ] 
-then  
-echo "Syntax is <$0> [<filename>]" 
-exit 1 
-fi 
-flag=0 
-if [ $# -eq 1 ] 
-then 
-term=`tty` 
-exec < $1 
-flag=1
-fi 
-while read line 
-do 
-no1=`expr $no1 + 1` 
-set $line>/dev/null 
-nowds=`expr $nowds + $#` 
-done 
-echo "number of lines=$no1" 
-echo "number of words=$nowds" 
-if [ $flag -eq 1 ] 
-then 
-exec < $term 
-fi 
+
+if [ $# -gt 1 ]; then
+    echo "Syntax is <$0> [<filename>]"
+    exit 1
+fi
+
+line_count=0
+word_count=0
+
+if [ $# -eq 1 ]; then
+    input="$1"
+else
+    input="/dev/stdin"
+fi
+
+while IFS= read -r line; do
+    ((line_count++))
+    word_count_in_line=$(wc -w <<< "$line")
+    ((word_count += word_count_in_line))
+done < "$input"
+
+echo "number of lines=$line_count"
+echo "number of words=$word_count"
+
 exit 0
+
+-------------------------------------
+
+$ ./countt.sh sample.txt
+number of lines=7
+number of words=9
