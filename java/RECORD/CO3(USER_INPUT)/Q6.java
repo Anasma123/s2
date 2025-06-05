@@ -1,4 +1,5 @@
-Q)create an interface having prototype of function area() and perimeter().create two classes circle and rectangle  which implements the above interface.create a menu driven program to find area and perimeter of object java program
+Q)create an interface having prototype of function area() and perimeter().create two classes circle and rectangle
+    which implements the above interface.create a menu driven program to find area and perimeter of object java program
 
 
 code:
