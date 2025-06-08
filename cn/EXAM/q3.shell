@@ -1,0 +1,11 @@
+#!/bin/bash
+
+read -p "Enter three sides: " a b c
+
+if [ "$a" -eq "$b" ] && [ "$b" -eq "$c" ]; then
+    echo "Equilateral triangle."
+elif [ "$a" -eq "$b" ] || [ "$b" -eq "$c" ] || [ "$a" -eq "$c" ]; then
+    echo "Isosceles triangle."
+else
+    echo "Scalene triangle."
+fi
